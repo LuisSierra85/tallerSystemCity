@@ -350,7 +350,7 @@ public class Login_Form extends javax.swing.JFrame {
         PreparedStatement st;
         ResultSet rs;
         
-        // Capturar datos desde el formulario
+        // Capturar datos desde el formulario de login
         String username = jTextField_Username.getText();
         String password = String.valueOf(jPasswordField_1.getPassword());
         
@@ -390,9 +390,10 @@ public class Login_Form extends javax.swing.JFrame {
             //si cumple con usuario y contraseña
             if(rs.next())
             {
-               
+                //Mensaje de autenticación de usuario
+               JOptionPane.showMessageDialog(null, "Authentication Successful", "Welcome", JOptionPane.INFORMATION_MESSAGE);
                  Home_Form form = new Home_Form();
-                 //claudia hace las veces de contador
+                 //luis hace las veces de contador
                 if(rs.getString("username").equals("luis"))
                 {
                    
@@ -402,7 +403,6 @@ public class Login_Form extends javax.swing.JFrame {
                 
                // todo eso ocurre en el formulario Home_Form
                 form.pack();
-                //form.setExtendedState(form.getExtendedState() | JFrame.MAXIMIZED_BOTH);
                 Dimension r =form.getBounds().getSize();
                 
                 //jLabel_BackgroundImage que está en el formulario  Home_Form
@@ -415,8 +415,8 @@ public class Login_Form extends javax.swing.JFrame {
                 this.dispose();
                 
             }else{
-                // error message
-                JOptionPane.showMessageDialog(null, "Invalid Username / Password","Login Error",2);
+                // Mensaje de error si no coincide la autenticación
+                JOptionPane.showMessageDialog(null, "Error, Invalid Username / Password","Login Error",2);
             }
             
         }
